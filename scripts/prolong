@@ -1,0 +1,7 @@
+wd=`pwd`;
+. ~/PLUMED/sourceme.sh
+for d in `cat noneq`; do\
+    cd  $d
+    ~/gromacs-2019.2-plumed-cuda/build/bin/gmx mdrun -v -plumed plumed.dat -cpi state.cpt -nsteps 50000 -nt 4 -noappend
+    cd $wd
+done

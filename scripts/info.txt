@@ -1,0 +1,14 @@
+This folder contains scripts that conduct ILBUS protocol
+
+check_iteration.py      (checks the convergence of the simulations, overlaps between windows and connectivity criterion, reports simulations to prolong)
+detect_connectivity.py  (analyzes overlaps in detail and proposes extra landmarks to remove convergence problems)
+get_landmarks.py        (select landmarks from pool of structures on basis of the RMSD)
+GO.py                   (the main script running the ILBUS protocol)
+GO-restart.py           (runs ILBUS protocol for an extra landmarks)
+gro_to_plumedfiles.py   (creates input files for plumed)
+join_sets-eq.py         (processes finished ILBUS run for calculation of MBAR)
+mbar-lowmem.py          (calculates the MBAR on the joined set)
+md_round                (placeholder for commands to run md simulation)
+prepare_frames.py       (converts gromacs .gro files to pdbs for plumed RMSD calculations)
+prepare.py              (prepares new iteration of ILBUS protocol)
+prolong                 (placeholder for commands to prolong md simulations)

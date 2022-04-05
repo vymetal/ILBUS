@@ -1,0 +1,50 @@
+* Description of files and the tree structure *
+
+This directory contains results of the simulations and input files that were used to set them. Unnecesary output files files were omitted for limited capacity of the storage.
+
+./103-1        (ILBUS simulation with 103 landmarks)
+./104-1        (ILBUS simulation with 104 landmarks)
+./208-1        (ILBUS simulation with 208 landmarks)
+./29-1         (ILBUS simulation with 29 landmarks)
+./34-1         (ILBUS simulation with 34 landmarks)
+./57-1         (ILBUS simulation with 57 landmarks)
+./60-1         (ILBUS simulation with 60 landmarks)
+./ad-traj      (Standard MD (10ns) for generation of landmarks)
+./benchmark-md (Very long (5us) standard MD simulation)
+./common       (Common files for MD used in all simulations)
+
+1) The folders with ILBUS simulations contains other folder whose names reflect the value of force constant used in umbrella sampling.
+eg. 100000 (100000 kJ.mol^-1.nm^-2)
+    75000  (75000 kJ.mol^-1.nm^-2)
+    56250  (56250 kJ.mol^-1.nm^-2)
+    .....
+File "DIRS" contains list of scheduled force constants to simulate.
+File "done" lists the performed ILBUS iterations.
+Folder frames contains pdb files of landmarks (atoms for rmsd calculation only)
+
+Each ILBUS iteration folder (eg. ./104-1/100000/) involves other folders, where the individual umbrella sampling simulations were conducted. The name of the folder represent the number of the particular landmark. These simulation folders may contain these files:
+COLVAR                  (plumed output file)
+frame0*.gro             (landmark used as a starting configuration for simulation)
+plumed.dat              (plumed input file)
+state.cpt               (gromacs checkpoint, used for continuation of the simulation)
+topol.tpr               (gromacs binary input file)
+traj_comp.part0*.xtc    (compressed trajectory - alanine dipeptide only)
+
+2) Content of ./ad-traj
+after_eq.gro  (input configuration after equilibration)
+rama.xvg      (ramachandran torsions sampled in course of the simulation)
+run.mdp       (gromacs simulation setup)
+topol.top     (gromacs topology)
+topol.tpr     (gromacs binary input file)
+traj_comp.xtc (gromacs compressed trajectory)
+
+3) Content of ./benchmark-md
+rama2.xvg     (ramachandran torsions sampled in course of the simulation)
+traj_comp.xtc (gromacs compressed trajectory)
+
+4) Content of ./common
+amber14sb.ff  (force field)
+ndx           (indices of atoms for RMSD calculation)
+run.mdp       (gromacs simulation parameters)
+topol.top     (gromacs topology)
+
